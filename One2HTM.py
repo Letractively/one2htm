@@ -60,6 +60,8 @@ class IndexMaker: #root class, never instantiated
             self.completed=True
         return self.html
     def writeFile(self, fullpath):
+        folder=os.path.dirname(fullpath)
+        if not os.path.isdir(folder): os.makedirs(folder)
         fs=open(fullpath, 'w')
         fs.write(self.getHTML().encode('utf-8'))
         fs.close()
